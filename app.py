@@ -14,7 +14,9 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
+git add ai_engineer.py
+git commit -m "Fix syntax error in ai_engineer.py"
+git push origin main
 from ai_engineer import run_ai_diagnostics, run_ai_chat
 from ai_engineer import run_ai_diagnostics, run_ai_chat
 
