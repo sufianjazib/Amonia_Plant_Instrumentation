@@ -20,7 +20,7 @@ def run_ai_diagnostics(sensor_data):
     
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-120b",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             max_tokens=400
@@ -38,7 +38,7 @@ def run_ai_chat(user_query, context):
     
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role": "system", "content": "You are an expert AI Field Engineer specializing in PLC logic, SCADA, and instrumentation control."},
                 {"role": "user", "content": prompt}
