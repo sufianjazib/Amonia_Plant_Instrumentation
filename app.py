@@ -76,7 +76,7 @@ elif tank_level < 15:
 # -----------------------------------------------------------------------------
 # 5. Header & Active Alarm Banners
 # -----------------------------------------------------------------------------
-st.title("🏭 Ammonia Plant Instrumentation Digital Twin")
+st.title("🏭 AI Instrument Health & Fault Diagnosis Platform")
 st.caption("Real-time telemetry, SCADA telemetry gauges, storage tank monitoring, and AI field diagnostics.")
 
 if active_alarms:
