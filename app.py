@@ -1,5 +1,4 @@
 ### File 10: `app.py`
-```python
 import time
 import pandas as pd
 import numpy as np
