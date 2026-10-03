@@ -10,6 +10,12 @@ from instruments import initialize_instruments
 from pid_controller import initialize_controllers
 from faults import FaultEngine, FAULT_CATALOG
 from alarms import AlarmSystem
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from ai_engineer import run_ai_diagnostics, run_ai_chat
 from ai_engineer import run_ai_diagnostics, run_ai_chat
 
 # Page Config
