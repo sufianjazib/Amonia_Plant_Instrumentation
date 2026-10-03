@@ -14,7 +14,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
+# Ensure current folder is in Python path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ai_engineer import run_ai_diagnostics, run_ai_chat
 from ai_engineer import run_ai_diagnostics, run_ai_chat
 
