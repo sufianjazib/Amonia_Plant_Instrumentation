@@ -20,7 +20,7 @@ def run_ai_diagnostics(sensor_data):
     
     try:
         response = client.chat.completions.create(
-            model="llama3-70b-8192",
+            model="openai/gpt-oss-120b",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.3,
             max_tokens=400
