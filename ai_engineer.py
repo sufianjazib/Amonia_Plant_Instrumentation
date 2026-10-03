@@ -38,7 +38,7 @@ def run_ai_chat(user_query, context):
     
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-8b-instant",
             messages=[
                 {"role": "system", "content": "You are an expert AI Field Engineer specializing in PLC logic, SCADA, and instrumentation control."},
                 {"role": "user", "content": prompt}
