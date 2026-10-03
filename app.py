@@ -53,6 +53,32 @@ fault_injection = st.sidebar.multiselect(
     ["High Pressure Trip", "Temperature Sensor Drift", "Valve Actuator Lockup"],
     default=[]
 )
+# 1. Read values from sidebar
+reactor_temp = st.sidebar.slider("Reformer Temperature (°C)", min_value=300, max_value=800, value=640, step=5)
+system_pressure = st.sidebar.slider("Synthesis Pressure (Bar)", min_value=50, max_value=250, value=180, step=5)
+ammonia_flow_input = st.sidebar.slider("Ammonia Output Flow (m³/h)", min_value=0, max_value=120, value=83, step=1)
+
+fault_injection = st.sidebar.multiselect(
+    "Inject System Faults",
+    ["High Pressure Trip", "Temperature Sensor Drift", "Valve Actuator Lockup"],
+    default=["High Pressure Trip"]
+)
+
+# 2. PLC Emergency Shutdown (ESD) Interlock Logic
+esd_tripped = False
+trip_reasons = []
+
+# Trip logic on high pressure threshold (>170 Bar) or manual fault injection
+if system_pressure > 170 or "High Pressure Trip" in fault_injection:
+    esd_tripped = True
+    trip_reasons.append("HIGH SYNTHESIS PRESSURE TRIP (ESD-101)")
+
+# Apply safety shutdown
+if esd_tripped:
+    ammonia_flow = 0  # Isolation valve XV-101 closes automatically on trip
+    st.error(f"🚨 **PLANT TRIP CONDITION ACTIVE**: {', '.join(trip_reasons)}. Emergency isolation valves closed. Flow forced to 0 m³/h.")
+else:
+    ammonia_flow = ammonia_flow_input
 
 # -----------------------------------------------------------------------------
 # 5. Dashboard Telemetry & Visualizations
